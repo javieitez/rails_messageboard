@@ -1,9 +1,17 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.subject %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+<table class="maintable" >
+  <tr>
+    <th class="text-center" >
+      <%= @article.subject %>
+    </th>
+
+
+    <%= render 'layouts/postbuttons', {article: @article} %> 
+
+
+</tr>
+  <tr>
+    <td colspan="3"><%= @article.text %></td>
+  </tr>
+  
+
+</table>

@@ -6,15 +6,16 @@
 
 <% @articles.each do |article| %>
     <tr>
-      <td class="article_title"  ><%= link_to article.subject, article_path(article) %></td>
-      <td class="text-right"><%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_article_path(article) %></td>
-      <td class="text-right"><%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, article_path(article),
-              method: :delete,
-              data: { confirm: 'u fuckin sure?' } %></td>
-    </tr>
-    <tr>
-      <td colspan="4" ><%= link_to article.text[0,190], article_path(article) %></td>
-    </tr>
-  <% end %>
+    <td class="article_title"  >
+      <%= link_to article.subject, article_path(article) %>
+    </td>
+    
+    <%= render 'layouts/postbuttons', {article: article} %> 
+  
+  </tr>
+  <tr>
+    <td colspan="4" ><%= link_to article.text[0,190], article_path(article) %></td>
+  </tr>
+<% end %>
 
-  </table>
+</table>

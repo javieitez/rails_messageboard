@@ -31,11 +31,10 @@ table, th, td {
 
 tr:nth-child(odd) {background-color: white}
 tr:nth-child(even) {background-color: lightgrey}
-tr:hover{background-color:#5F9EA0}
 
 a:hover{
-    background-color:black;
-    color:white;
+    text-decoration: underline;
+    color:black;
 }
 
 .footer {
