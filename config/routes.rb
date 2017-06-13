@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'dash_board/help'
 
 
-  root 'dash_board#home'
+  root 'articles#index'
   
   resources :articles
   
