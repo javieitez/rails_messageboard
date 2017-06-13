@@ -1,5 +1,10 @@
     <td class="text-right smaller_fonts">
-    <%= time_ago_in_words(article.created_at) %> ago
+    <%= time_ago_in_words(article.created_at) %> ago.
+    
+    <% if article.created_at != article.updated_at %>
+        Updated <%= time_ago_in_words(article.updated_at) %> ago.
+    <% end %>
+    
     </td>
     
 
