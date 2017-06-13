@@ -1,3 +1,8 @@
+    <td class="text-right smaller_fonts">
+    <%= time_ago_in_words(article.created_at) %> ago
+    </td>
+    
+
     <td class="text-right">
     <%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, 
                                                   edit_article_path(article) %>
