@@ -34,8 +34,6 @@ tr:nth-child(odd) {background-color: lightgrey}
 }
 
 
-
-
 a:hover{
     text-decoration: underline;
     color:black;
@@ -68,3 +66,11 @@ h1, h2, h3, h4, h5 {
     color: black !important;
     }
 
+#article_text {
+  width: 90%;
+  height: 16em;
+    }
+
+#article_subject {
+  width: 90%;
+    }
