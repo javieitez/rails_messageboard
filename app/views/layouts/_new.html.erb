@@ -1,4 +1,7 @@
      <%= form_for :article, url: articles_path do |f| %>
+
+    <%= render 'layouts/errorcheck', {article: @article} %>
+
      <p>
         <%= f.label :subject %><br>
         <%= f.text_field :subject %>

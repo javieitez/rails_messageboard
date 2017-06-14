@@ -1,0 +1,15 @@
+
+<% if @article.nil? == false %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h5>
+        Please solve the following <%= pluralize(@article.errors.count, "error") %>
+        </h5>
+        <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+<% end %>

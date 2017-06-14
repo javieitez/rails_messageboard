@@ -3,8 +3,13 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
  
-    @article.save
-    redirect_to @article
+    if @article.save
+      flash[:success] = "Note Created!"
+      redirect_to @article
+    else
+      render 'new'
+    end
+  
   end
   
   def show
@@ -33,6 +38,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
    
     if @article.update(article_params)
+      flash[:success] = "Note Updated!"
       redirect_to @article
     else
       render 'edit'
