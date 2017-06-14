@@ -2,9 +2,9 @@
 <% if @article.nil? == false %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h5>
+      <p><strong>
         Please solve the following <%= pluralize(@article.errors.count, "error") %>
-        </h5>
+        </strong></p>
         <ul>
             <% @article.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
