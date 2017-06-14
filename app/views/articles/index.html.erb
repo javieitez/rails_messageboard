@@ -1,9 +1,6 @@
+    <h5>Active Notes</h5>
+
 <table class="maintable" >
-  <tr>
-    <th class="text-center" colspan="20" >Active Notes</th>
-  </tr>
-
-
 <% @articles.each do |article| %>
     <tr>
     <td class="article_title"  >
@@ -19,3 +16,5 @@
 <% end %>
 
 </table>
+
+<%= will_paginate %>
