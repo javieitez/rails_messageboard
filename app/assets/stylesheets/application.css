@@ -16,7 +16,7 @@
 
 html, body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #5F9EA0;
+    background-color: grey;
 }
 
 a {color: black}
@@ -28,6 +28,13 @@ table, th, td {
 
 tr:nth-child(even) {background-color: white}
 tr:nth-child(odd) {background-color: lightgrey}
+
+.message {
+    padding: 0.5em 0.5em 0.5em 0.5em
+}
+
+
+
 
 a:hover{
     text-decoration: underline;
@@ -51,10 +58,13 @@ a:hover{
     font-size: 0.7em;
 }
 
-.maintable {
-}
-
 h1, h2, h3, h4, h5 {
     background-color: lightgrey;
     text-align: center;
     }
+    
+.pagination a {
+    font-size: 0.8em;
+    color: black !important;
+    }
+
