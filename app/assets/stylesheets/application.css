@@ -13,31 +13,41 @@
  *= require_tree .
  *= require_self
  */
-
+ 
+ 
 html, body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: grey;
+    background: linear-gradient(to bottom right, grey, white);
 }
 
 a {color: black}
+a:hover{
+    text-decoration: underline;
+    color:black;
+}
 
 table, th, td {
     border-bottom: 0.1em solid grey;
     border-collapse: collapse;
 }
 
-tr:nth-child(even) {background-color: white}
+tr:nth-child(even) {background-color: transparent}
 tr:nth-child(odd) {background-color: lightgrey}
+
+.maintable {
+    width: 100%;
+    border-radius: 25px;
+    }
 
 .message {
     padding: 0.5em 0.5em 0.5em 0.5em
 }
 
-
-a:hover{
-    text-decoration: underline;
-    color:black;
-}
+.rcorners {
+    border-radius: 5px 30px;
+    background: white;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+} 
 
 .footer {
     text-align: right;

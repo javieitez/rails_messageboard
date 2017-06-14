@@ -9,7 +9,11 @@
   
   </tr>
   <tr>
-    <td class="message" colspan="20" ><%= link_to article.text[0,190], article_path(article) %></td>
+    <td class="message" colspan="20" >
+      <div class ="rcorners">
+      <%= link_to article.text[0,190], article_path(article) %>
+      </div>
+      </td>
   </tr>
 <% end %>
 
