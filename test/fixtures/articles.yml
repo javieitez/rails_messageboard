@@ -7,3 +7,9 @@ one:
 two:
   subject: MyString
   text: MyText
+
+#This one is supposed to fail  
+
+three: 
+  subject: 123
+  text: nil
