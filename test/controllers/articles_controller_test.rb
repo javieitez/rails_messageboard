@@ -6,6 +6,13 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @base_title = "Message Board"
   end
 
+  test "should get root" do # root must be articles index
+    get root_path
+    assert_response :success
+    assert_select "title", "All messages | #{@base_title}"
+  end
+
+
   
   test "should get index" do
     get articles_path
