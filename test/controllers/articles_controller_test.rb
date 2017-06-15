@@ -3,13 +3,13 @@ require 'test_helper'
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   
   def setup
-    @base_title = "Message Board"
+      @base_title = "Message Board"
   end
 
   test "should get root" do # root must be articles index
     get root_path
     assert_response :success
-    assert_select "title", "All messages | #{@base_title}"
+    assert_select "title", "#{@base_title}"
   end
 
 
@@ -17,7 +17,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get articles_path
     assert_response :success
-    assert_select "title", "All messages | #{@base_title}"
+    assert_select "title", "#{@base_title}"
   end
   
   test "should get new" do
