@@ -1,15 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  subject: MyString
-  text: MyText
+article1:
+  id: 1
+  subject: this is the subject
+  text: this is the text and must be longer than twenty five characters
 
-two:
-  subject: MyString
-  text: MyText
 
-#This one is supposed to fail  
+article2:
+  id: 2
+  subject: subject of the 2nd article
+  text: this is the other text and must be longer than twenty five characters
 
-three: 
-  subject: 123
-  text: nil
+
