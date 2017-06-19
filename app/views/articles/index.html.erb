@@ -12,7 +12,20 @@
   <tr>
     <td class="message" colspan="20" >
       <div class ="rcorners">
-      <%= link_to article.text[0,190], article_path(article) %>
+        
+        <% if article.text.split.size > 30 %>
+      
+          <%= link_to article_path(article) do %>
+             <%= article.text.truncate_words(30)  %><div class="readmore">
+               <%= article.text.split.size - 30 %> words left</div>
+      
+          <% end %>
+        <% else %>
+      
+          <%= link_to article.text, article_path(article) %>
+      
+        <% end %>
+      
       </div>
       </td>
   </tr>

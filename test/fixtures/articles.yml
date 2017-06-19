@@ -2,13 +2,16 @@
 
 article1:
   id: 1
-  subject: this is the subject
-  text: this is the text and must be longer than twenty five characters
+  subject: 'this is the subject'
+  text: 'this is the text and must be longer than twenty five characters'
 
 
 article2:
   id: 2
-  subject: subject of the 2nd article
-  text: this is the other text and must be longer than twenty five characters
+  subject: 'subject of the 2nd article'
+  text: 'this is the other text and must be longer than twenty five characters'
 
-
+article3:
+  id: 3
+  subject: 'subject of the 3nd article'
+  text: <%= ' a word ' * 200 %>

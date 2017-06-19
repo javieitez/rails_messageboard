@@ -18,6 +18,13 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "#{@base_title}"
   end
   
+  # 3rd article in fixtures conforms to this test
+  test "Large notes should be splitted at 30 words" do
+    get articles_path
+    assert_response :success
+    assert_select 'div[class=?]', 'readmore'
+  end
+
   test "should get new + title" do
     get new_article_path
     assert_response :success
