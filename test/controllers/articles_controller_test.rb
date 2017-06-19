@@ -34,7 +34,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test "should redirect and flash when posting new note" do
     get new_article_path
     post articles_path, params: {article:  { subject: "123456", 
-                                                  text: "a" * 100 } } 
+                                                  text: "a " * 100 } } 
     assert_response :redirect, "Not redirected"
     follow_redirect!
     assert_response :success
@@ -45,11 +45,21 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test "should raise error when posting incorrect note" do
     get new_article_path
     post articles_path, params: {article:  { subject: "123", 
-                                                  text: "a" * 100 } } 
+                                                  text: "a " * 100 } } 
     assert_select 'th', {count: 0, text: "123"}, "note must not be
                                                               rendered in table"
     assert_select 'input[value=?]', '123'
     assert_select 'div[id=?]', 'error_explanation'
   end
+
+  test "should wrap insanely long words" do
+    get new_article_path
+    post articles_path, params: {article:  { subject: "123456", 
+                                                  text: 'w' * 500 } } 
+    follow_redirect!
+    get articles_path
+    assert_select 'div', {count: 0, text: 'w' * 500}
+  end
+
 
 end

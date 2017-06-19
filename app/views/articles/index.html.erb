@@ -18,8 +18,13 @@
           <%= link_to article_path(article) do %>
              <%= article.text.truncate_words(30)  %><div class="readmore">
                <%= article.text.split.size - 30 %> words left</div>
-      
           <% end %>
+
+        <% elsif article.text.length > 30 %>
+          <%= link_to article_path(article) do %>
+            <%= article.text[0, 120] %><div class="readmore wrongformat">
+              This note's format is probably incorrect</div>
+            <% end %>
         <% else %>
       
           <%= link_to article.text, article_path(article) %>
