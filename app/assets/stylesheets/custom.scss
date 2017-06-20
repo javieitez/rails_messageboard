@@ -29,6 +29,11 @@ h1, h2, h3, h4, h5 {
     text-align: center;
     }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 /* errors */
 
 #error_explanation {
@@ -43,6 +48,12 @@ h1, h2, h3, h4, h5 {
     font-weight: 600;
     color: red;
     }
+
+/* autofit images */
+
+.embedded_img {
+  object-fit: contain;
+}
 
 /* specific classes */
 

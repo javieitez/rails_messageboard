@@ -14,7 +14,7 @@
     <td class="message" colspan="20">
       <div class ="rcorners">
         <%= @article.text %>
-        <p><%= image_tag @article.picture.url if @article.picture? %></p>
+        <%= render 'layouts/articlepicture', {article: @article}  %>
       </div>
     </td>
   </tr>

@@ -30,7 +30,7 @@
           <%= link_to article.text, article_path(article) %>
       
         <% end %>
-          <%= image_tag article.picture.url if article.picture? %>
+        <%= render 'layouts/articlepicture', {article: article}  %>
       </div>
       </td>
   </tr>
