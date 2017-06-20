@@ -20,10 +20,10 @@
                <%= article.text.split.size - 30 %> words left</div>
           <% end %>
 
-        <% elsif article.text.length > 30 %>
+        <% elsif contains_insanely_long_words(article.text) %>
           <%= link_to article_path(article) do %>
             <%= article.text[0, 120] %><div class="readmore wrongformat">
-              This note's format is probably incorrect</div>
+              wrong format or meaningless text?</div>
             <% end %>
         <% else %>
       
