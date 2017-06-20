@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'carrierwave/test/matchers'
 
 class ArticleTest < ActiveSupport::TestCase
 
@@ -13,6 +14,7 @@ class ArticleTest < ActiveSupport::TestCase
     article= Article.new
     article.subject = @valid_subject
     article.text = @valid_text
+    article.picture = nil
     assert article.save, "Cannot save a valid note"
   end
   
@@ -25,6 +27,7 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.new
     article.subject = @invalid_subject
     article.text = @valid_text
+    article.picture = nil
     assert_not article.save, "Saved note with short subject"
   end
 
@@ -32,6 +35,7 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.new
     article.subject = @valid_subject * 3
     article.text = @valid_text
+    article.picture = nil
     assert_not article.save, "Saved note with subject too long"
   end
 
@@ -39,6 +43,7 @@ class ArticleTest < ActiveSupport::TestCase
     article = Article.new
     article.subject = @valid_subject
     article.text = @invalid_text
+    article.picture = nil
     assert_not article.save, "Saved note with short content"
   end
 

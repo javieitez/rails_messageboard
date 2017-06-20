@@ -1,15 +1,29 @@
-     <%= form_for :article, url: articles_path do |f| %>
+<%= form_for :article, url: articles_path do |f| %>
 
-    <%= render 'layouts/errorcheck', {article: @article} %>
+<%= render 'layouts/errorcheck', {article: @article} %>
 
-     <p>
-        <%= f.label :subject %><br>
-        <%= f.text_field :subject %>
-      </p>
-       <p>
-         <%= f.label :text %><br>
-         <%= f.text_area :text %>
-       </p><p>
-         <%= f.submit %>
-       </p>
-     <% end %>
+<p>
+   <%= f.label :subject %><br>
+   <%= f.text_field :subject %>
+</p>
+<p>
+  <%= f.label :text %><br>
+  <%= f.text_area :text %>
+</p>
+
+<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+
+<script type="text/javascript">
+  $('#article_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 2) {
+      alert('Maximum file size is 2MB. Please choose a smaller file.');
+    }
+  });
+</script>

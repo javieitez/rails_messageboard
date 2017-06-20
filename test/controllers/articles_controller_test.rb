@@ -25,21 +25,25 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'div[class=?]', 'readmore'
   end
 
-  test "should get new + title" do
+  test "should get new" do
     get new_article_path
     assert_response :success
     assert_select "title", "Compose new message | #{@base_title}"
+    assert_select 'input[type=file]'
   end
 
   test "should redirect and flash when posting new note" do
+    picture = fixture_file_upload('kitten.jpg', 'image/jpg')
     get new_article_path
     post articles_path, params: {article:  { subject: "123456", 
-                                                  text: "a " * 100 } } 
+                                                  text: "a " * 100,
+                                                  picture: picture} } 
     assert_response :redirect, "Not redirected"
     follow_redirect!
     assert_response :success
     assert_not flash.empty?, "Flash is empty"
     assert_select 'th', '123456', "note not rendered"
+    assert_select 'img[alt=?]', 'Kitten'
   end
 
   test "should raise error when posting incorrect note" do
