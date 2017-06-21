@@ -37,6 +37,8 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
    
+    
+    
     if @article.update(article_params)
       flash[:success] = "Note Updated!"
       redirect_to @article
@@ -49,5 +51,5 @@ end
 
 private
   def article_params
-    params.require(:article).permit(:subject, :text, :picture)
+    params.require(:article).permit(:subject, :text, :picture, :remove_picture)
   end
