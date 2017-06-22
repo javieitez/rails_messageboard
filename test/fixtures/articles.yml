@@ -5,7 +5,6 @@ article1:
   subject: 'this is the subject'
   text: 'this is the text and must be longer than twenty five characters'
 
-
 article2:
   id: 2
   subject: 'subject of the 2nd article'
@@ -13,5 +12,5 @@ article2:
 
 article3:
   id: 3
-  subject: 'subject of the 3nd article'
+  subject: 'subject of the 3rd article'
   text: <%= ' a word ' * 200 %>

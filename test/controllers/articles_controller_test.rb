@@ -32,7 +32,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'input[type=file]'
   end
 
-  test "should redirect and flash when posting new note" do
+  test "post new note with image, then edit" do
     picture = fixture_file_upload('kitten.jpg', 'image/jpg')
     get new_article_path
     post articles_path, params: {article:  { subject: "123456", 
@@ -41,9 +41,18 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect, "Not redirected"
     follow_redirect!
     assert_response :success
-    assert_not flash.empty?, "Flash is empty"
+    assert_not flash.empty?, "no Flash on new note"
     assert_select 'th', '123456', "note not rendered"
     assert_select 'img[alt=?]', 'Kitten'
+    assert_select 'a[href=?]', edit_article_path
+    get edit_article_path
+    put article_path, params: {article: {subject: "subject changed", 
+                                            remove_picture: true }}
+    assert_response :redirect, "Not redirected"
+    follow_redirect!
+    assert_not flash.empty?, "no Flash on edited note"
+    assert_select 'th', 'subject changed'
+    assert_select 'img[alt=?]', 'Kitten', count: 0
   end
 
   test "should raise error when posting incorrect note" do
