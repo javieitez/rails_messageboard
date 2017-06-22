@@ -1,4 +1,4 @@
-    <td class="text-right smaller_fonts">
+    <td class="text-right smaller_fonts padded">
     <%= time_ago_in_words(article.created_at) %> ago.
     
     <% if article.created_at != article.updated_at %>
@@ -8,12 +8,12 @@
     </td>
     
 
-    <td class="text-right">
+    <td class="text-right padded">
     <%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, 
                                                   edit_article_path(article) %>
     </td>
       
-    <td class="text-right">
+    <td class="text-right padded rcorners-right">
     <%= link_to "<span class=\"glyphicon glyphicon-trash\"></span>".html_safe, 
                                                         article_path(article),
                                                               method: :delete,

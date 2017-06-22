@@ -71,11 +71,25 @@ img {
 }
 
 .rcorners {
-    border-radius: 5px 30px;
+    border-radius: 7px 7px;
     background: white;
     padding: 0.5em 0.5em 0.5em 0.5em;
     word-break: break-all;
 } 
+
+.padded { 
+    padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.rcorners-left {
+    border-radius: 7px 0px 0px 7px;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.rcorners-right {
+    border-radius: 0px 7px 7px 0px;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+}
 
 .footer {
     text-align: right;

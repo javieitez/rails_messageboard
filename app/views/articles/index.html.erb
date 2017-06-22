@@ -1,8 +1,8 @@
 
 <table class="maintable" >
 <% @articles.each do |article| %>
-    <tr>
-    <td class="article_title"  >
+    <tr class="">
+    <td class="article_title rcorners-left"  >
       <%= link_to article.subject, article_path(article) %>
     </td>
     
