@@ -1,3 +1,5 @@
+<% provide(:title, "Edit Note") %>
+
 <%= form_for(@article) do |f| %>
 
 <%= render 'layouts/errorcheck', {article: @article} %>
@@ -10,24 +12,27 @@
   <p>
     <%= f.label :text %><br>
     <%= f.text_area :text %>
-  </p>  <p>
-
-  <div id="pic_add">
-    <% if @article.picture? %>
-      <%= f.label "Replace the current picture" %>
-    <% else %>  
-      <%= f.label "Add a picture"  %>
-    <% end %>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-  </div>  
-
+  </p>
 
 
         <% if @article.picture? %>
         <%= f.label "Remove Current Picture" %>
         <%= f.check_box :remove_picture, {onclick: "hideDiv()"} %>
       <% end %>
-      <%= f.submit %>  
+
+
+
+  <div id="pic_add">
+    <% if @article.picture? %>
+      <%= f.label "Replace the current picture?" %>
+    <% else %>  
+      <%= f.label "Add a picture?" %>
+    <% end %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>  
+
+      <p><%= f.submit "Update Note", class: "btn btn-primary" %></p>  
+
 
   <p>
      <%= render 'layouts/articlepicture', {article: @article}  %>
@@ -39,6 +44,9 @@
 
 
 <script>
+
+document.getElementById("article_remove_picture").onload.checked = false;
+
 function hideDiv() {
     var x = document.getElementById('pic_add');
     if (x.style.display === 'none') {
@@ -46,5 +54,6 @@ function hideDiv() {
     } else {
         x.style.display = 'none';
     }
+    $("img").toggleClass("img-trans");
 }
 </script>

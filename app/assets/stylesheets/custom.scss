@@ -53,7 +53,12 @@ img {
 }
 
 .embedded_img {
-  object-fit: contain;
+    object-fit: contain;
+}
+
+.img-trans {
+    opacity: 0.4;
+    filter: grayscale(100%);
 }
 
 /* specific classes */
