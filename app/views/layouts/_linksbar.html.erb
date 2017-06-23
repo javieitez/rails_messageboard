@@ -2,21 +2,32 @@
 <tr>
 <td class="rcorners-left">
   
-  <%= "true"  %>
+  <% if @requires_pager  %>
+    <%= link_to "<span class=\"glyphicon glyphicon-menu-left\">
+  </span>".html_safe, article_path(@article.next) if not_first(@article) %>
+  <% end %>
   
 </td>  
 
 <td>
   <%= link_to "<span class=\"glyphicon glyphicon-comment\">
-  </span>  New Note".html_safe, new_article_path %>
+  </span>".html_safe, new_article_path %>
 
+</td>
+
+<td>
+ <%= link_to "<span class=\"glyphicon glyphicon-home\">
+  </span>".html_safe, root_path %>
 </td>
 
 <td class="rcorners-right">
 
-  <%= link_to "<span class=\"glyphicon glyphicon-home\">
-  </span>  Home".html_safe, root_path %>
-
+  <% if @requires_pager  %>
+    <%= link_to "<span class=\"glyphicon glyphicon-menu-right\">
+  </span>".html_safe, article_path(@article.previous) if not_last(@article) %>
+  <% end %>
+  
+ 
 </td>
   
 </tr>

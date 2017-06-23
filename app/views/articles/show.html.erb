@@ -1,9 +1,5 @@
 <% provide(:title, "Note #" + @article.id.to_s ) %>
-
-<%= link_to "next>", article_path(@article.next) if not_first(@article) %>
-<br>
-<%= link_to "<prev", article_path(@article.previous) if not_last(@article) %>
-
+<% @requires_pager = true %>
 
 <table class="maintable" >
   <tr>
