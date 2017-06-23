@@ -1,24 +1,19 @@
-# README
+## Rails Message Board
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple message board with image upload support.
 
-Things you may want to cover:
+Currently in **Alpha** status: 
 
-* Ruby version
+* Messages can be created, edited or destroyed  by anyone
+* Subthreads are not developed yet
 
-* System dependencies
+---
 
-* Configuration
+## Requirements
 
-* Database creation
+* Requires Rails 5.1.1 + Ruby 2.3 or higher
 
-* Database initialization
+* See the Gemfile for system dependencies
 
-* How to run the test suite
+* Test suite is executed just by running `rails test` at the project folder
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
