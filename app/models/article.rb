@@ -7,6 +7,15 @@ class Article < ApplicationRecord
     validates :text, presence: true,
                        length: {minimum: 25}
     mount_uploader :picture, PictureUploader
+    
+
+  def next
+    self.class.where("created_at > ?", created_at).last
+  end
+
+  def previous
+    self.class.where("created_at < ?", created_at).first
+  end
 
   private
   

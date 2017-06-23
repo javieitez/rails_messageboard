@@ -15,4 +15,21 @@ module ArticlesHelper
         end
     end
 
+  def not_first(article)
+  	if article.id == Article.first.id
+  		return false
+  	else
+  	  return true
+  	end
+  end
+  
+  def not_last(article)
+  	if article.id == Article.last.id
+  		return false
+  	else
+  	  return true
+  	end
+  end
+
 end
+
