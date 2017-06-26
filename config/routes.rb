@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
   get 'dash_board/home'
 
   get 'dash_board/help'

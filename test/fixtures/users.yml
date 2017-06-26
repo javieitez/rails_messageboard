@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "The First User"
+  email: user1@hotmail.com
+  username: firstuser
+  about: "Lorem ipsum and shit"
+
+two:
+  name: "The Second User"
+  email: user2@hotmail.com
+  username: 2nduser
+  about: "Lorem ipsum and shit"
+

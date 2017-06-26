@@ -5,7 +5,7 @@ class Article < ApplicationRecord
                        format: { without: /((.)\2{7,})/, 
                        message: "contains too many repeated characters" }
     validates :text, presence: true,
-                       length: {minimum: 25}
+                       length: {minimum: 25, maximum: 40000}
     mount_uploader :picture, PictureUploader
     
 
