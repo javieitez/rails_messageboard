@@ -11,12 +11,19 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test "should save valid note" do
-    article= Article.new
+    article = Article.new
     article.subject = @valid_subject
     article.text = @valid_text
     article.picture = nil
     assert article.save, "Cannot save a valid note"
   end
+  
+  test "should get previous and next" do
+    article = Article.second
+    assert_not_nil article.previous, "can't get previous note"
+    assert_not_nil article.next, "can't get next note"
+  end
+  
   
   test "should not save empty note" do
     article = Article.new
