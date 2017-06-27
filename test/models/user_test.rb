@@ -5,7 +5,8 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: "Example User", email: "user@example.com",
                                           username: "exampleuser",
-            about: "Lorem ipsum cogito ergo sum timeo danaos et dona ferentes")
+            about: "Timeo danaos et dona ferentes",
+            password: "passwd1234", password_confirmation: "passwd1234")
   end
 
   test "should be valid" do
@@ -80,6 +81,23 @@ class UserTest < ActiveSupport::TestCase
     assert_not duplicate_user.valid?
   end
 
+  # For some reason, this test crashes Ruby if you hardcode  
+  # the mixed case address instead of using a variable
+  test "email addresses should be saved as lower-case" do
+    mixed_case_email = "Foo@ExAMPle.CoM"
+    @user.email = mixed_case_email
+    @user.save
+    assert_equal mixed_case_email.downcase, @user.reload.email
+  end
 
+  test "password should be present (nonblank)" do
+    @user.password = @user.password_confirmation = " " * 9
+    assert_not @user.valid?
+  end
+
+  test "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a" * 7
+    assert_not @user.valid?
+  end
 
 end

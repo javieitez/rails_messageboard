@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails'
+gem 'bcrypt'
 gem 'sqlite3'
 gem 'puma'
 gem 'sass-rails'
@@ -23,7 +24,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
-gem 'carrierwave'
+gem 'carrierwave' 
 gem 'mini_magick'
 gem 'fog'
 
