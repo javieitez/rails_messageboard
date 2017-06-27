@@ -11,6 +11,7 @@
 
   <body>
     <%= render 'layouts/header'%>
+    <div class="container">
     <%= render 'layouts/linksbar'%>
     
      <% flash.each do |message_type, message| %>
@@ -21,7 +22,9 @@
     <%= yield %>
     
 
-    </div>
+    
     <%= render 'layouts/footer'%>
+  <%= debug(params) if Rails.env.development? %>
+  </div>
   </body>
 </html>
