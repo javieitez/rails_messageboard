@@ -19,6 +19,7 @@ gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass'
 
 gem 'minitest-reporters'
+gem 'rails-controller-testing'
 
 gem 'jquery-rails'
 gem 'turbolinks'

@@ -110,10 +110,9 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-    test "username regexp is safe for multiline attacks" do
+    test "username regexp is safe from multiline attacks" do
     @user.username = "user\name"
     assert_not @user.valid?
   end
-
 
 end

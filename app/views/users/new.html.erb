@@ -1,23 +1,23 @@
-<% provide(:title, 'Sign up') %>
+<% provide(:title, 'Create your account') %>
 
-<h3>Create a user account</h3>
-<p>fields marked with a * are required</p>
+<h3>Create your user account</h3>
     <%= form_for(@user) do |f| %>
+      <%= render 'layouts/errorcheck_user'  %>
       
       <%= f.label :name, "Full Name" %> 
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control' %>
       
       <%= f.label :username, "UserName" %> - No spaces allowed.  
-      <%= f.text_field :name %>
+      <%= f.text_field :username, class: 'form-control' %>
 
       <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "Confirm your password" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
