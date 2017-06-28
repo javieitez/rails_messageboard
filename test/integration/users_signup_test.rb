@@ -7,7 +7,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
 
   test "Everything wrong in signup form" do
-    get new_user_path
+    get signup_path
     assert_select "title", "Create your account | #{@base_title}"
     assert_no_difference 'User.count' do
       post users_path, params: { user: { name:  "",

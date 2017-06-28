@@ -115,4 +115,15 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+ test "username must be unique and case insensitive" do
+    @user.username = "FirstUser"
+    assert_not @user.valid?
+  end
+
+ test "email must be unique" do
+    @user.email = "user1@hotmail.com"
+    assert_not @user.valid?
+  end
+
+
 end
