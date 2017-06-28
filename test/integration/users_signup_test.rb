@@ -9,6 +9,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "Everything wrong in signup form" do
     get signup_path
     assert_select "title", "Create your account | #{@base_title}"
+    assert_select "a[href=?]", signup_path, count: 0
+    assert_select "a[href=?]", logout_path, count: 0
     assert_no_difference 'User.count' do
       post users_path, params: { user: { name:  "",
                                         email: "user@invalid",
@@ -61,6 +63,18 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
   end
 
-
+  test "valid signup and autologin" do
+    get signup_path
+    assert_difference 'User.count', 1 do
+      post users_path, params: { user: { name:  "user name",
+                                        email: "user@val.id",
+                                        username: "username",
+                                        password:              "foo123456789",
+                                        password_confirmation: "foo123456789" } }
+    end
+    follow_redirect!
+    assert_template 'users/show'
+    assert is_logged_in?
+  end
 
 end

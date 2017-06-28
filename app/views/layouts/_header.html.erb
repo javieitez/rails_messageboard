@@ -5,7 +5,7 @@
     <%= link_to "<span class=\"glyphicon glyphicon-log-out\">
   </span>".html_safe + " Log out", logout_path, method: :delete %> |
     <%= link_to "<span class=\"glyphicon glyphicon-user\">
-  </span>".html_safe + " My Profile", current_user %> |
+  </span>".html_safe + " My Profile", current_user if !current_page?(current_user) %> |
     Settings
 <%else%>
 
