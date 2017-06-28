@@ -25,9 +25,17 @@ tr:nth-child(odd) {
     }
 
 h1, h2, h3, h4, h5 {
-    background-color: lightgrey;
     text-align: center;
     }
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 0px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 
 
 /* errors */

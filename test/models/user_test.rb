@@ -96,8 +96,24 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "password should have a minimum length" do
-    @user.password = @user.password_confirmation = "a" * 7
+    @user.password = @user.password_confirmation = "a" * 1
     assert_not @user.valid?
   end
+  
+  test "username must not contain spaces" do
+    @user.username = "user name"
+    assert_not @user.valid?
+  end
+
+  test "username must not contain weird characters" do
+    @user.username = "user,name"
+    assert_not @user.valid?
+  end
+
+    test "username regexp is safe for multiline attacks" do
+    @user.username = "user\name"
+    assert_not @user.valid?
+  end
+
 
 end

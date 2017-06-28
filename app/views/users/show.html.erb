@@ -1,6 +1,17 @@
 <% provide(:title, @user.name) %>
-<h3>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h3>
 
+  <h3>
+  <%= gravatar_for @user %><%= @user.name %>
+  </h3>
+    
+      <div class ="rcorners">
+        <p><strong>About <%= @user.name %>:</strong></p>
+        <p>
+          <% if @user.about.nil?  %>
+            This person is too lazy or too irrelevant to have even typed a 
+            self description...
+          <% else %>
+            <%= @user.about %>
+          <% end %>
+        </p>
+      </div>
