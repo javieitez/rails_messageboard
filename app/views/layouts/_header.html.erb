@@ -1,3 +1,19 @@
-<div class="header">
-find me in layouts/header
+<div class="header readmore">
+
+<% if logged_in? %>
+
+    <%= link_to "<span class=\"glyphicon glyphicon-log-out\">
+  </span>".html_safe + " Log out", logout_path, method: :delete %> |
+    <%= link_to "<span class=\"glyphicon glyphicon-user\">
+  </span>".html_safe + " My Profile", current_user %> |
+    Settings
+<%else%>
+
+  <%= link_to "<span class=\"glyphicon glyphicon-log-in\">
+  </span>".html_safe + " Log In", login_path if !current_page?(login_path) %> 
+  <%= "or" if !current_page?(login_path) and !current_page?(signup_path)  %> 
+  <%= link_to "<span class=\"glyphicon glyphicon-edit\">
+  </span>".html_safe + " Sign Up", signup_path if !current_page?(signup_path) %>
+
+<% end %>
 </div>
