@@ -14,10 +14,11 @@
     <%= f.text_area :text %>
   </p>
 
-
-        <% if @article.picture? %>
-        <%= f.label "Remove Current Picture" %>
-        <%= f.check_box :remove_picture, {onclick: "hideDiv()"} %>
+      <% if @article.picture? %>
+        <%= f.label :remove_picture, class: "inline" do %>
+          <%= f.check_box :remove_picture, {onclick: "hideDiv()"} %>
+          <span>Remove Current Picture</span>
+        <% end %>
       <% end %>
 
 
