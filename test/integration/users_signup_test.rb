@@ -21,6 +21,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/new'
     assert_select 'div#error_explanation'
     assert_select 'div.field_with_errors'
+    assert_not is_logged_in?
   end
 
   test "invalid password confirmation in form" do
@@ -31,6 +32,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                         password:              "foo123456789",
                                         password_confirmation: "bar123456789" } }
     end
+    assert_template 'users/new'
+    assert_not is_logged_in?
   end
 
   test "password too short in form" do
@@ -41,6 +44,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                         password:              "foo",
                                         password_confirmation: "foo" } }
     end
+    assert_not is_logged_in?
   end
 
   test "invalid username in form" do
@@ -51,6 +55,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                         password:              "foo123456789",
                                         password_confirmation: "foo123456789" } }
     end
+    assert_not is_logged_in?
   end
 
   test "invalid email in form" do
@@ -61,6 +66,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                         password:              "foo123456789",
                                         password_confirmation: "foo123456789" } }
     end
+    assert_not is_logged_in?  
   end
 
   test "valid signup and autologin" do
