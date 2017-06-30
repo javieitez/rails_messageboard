@@ -13,3 +13,12 @@ user2:
   username: 2nduser
   about: "Lorem ipsum and shit"
   password_digest: <%= User.digest('password') %>
+
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  username: <%= "user#{n}" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>

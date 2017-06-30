@@ -1,11 +1,26 @@
 <% provide(:title, 'All users') %>
-<h1>All users</h1>
+<h3>All users</h3>
 
-<ul class="list-group">
-  <% @users.each do |user| %>
-    <li class="list-group-item">
-      <%= gravatar_for user, size: 50 %>
-      <%= link_to user.name, user %>
-    </li>
-  <% end %>
-</ul>
+  <%= will_paginate %>  
+<% @users.each do |user| %>
+
+<p>
+      <%= link_to user do %>
+        <div class="message rcorners">
+          <div>
+          <%= gravatar_for user, size: 50 %>
+            <%= user.name %>
+          </div>
+        
+      <% end %>
+      
+      <% if !user.about.nil?  %>
+        <div class="userabout">
+          <%= user.about.truncate_words(30) %>
+        </div>
+      <% end %>
+        </div>
+</p>
+<% end %>
+
+  <%= will_paginate %>
