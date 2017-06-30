@@ -13,7 +13,6 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 
-gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass'
