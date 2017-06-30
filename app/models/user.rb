@@ -6,7 +6,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name, presence:true,
-                    length: { minimum: 4, maximum: 400 }
+                   length: { minimum: 4, maximum: 400 }
   validates :username, presence:true,
                     length: { minimum: 4, maximum: 90 },
                     format: { with: NO_SPACES },
