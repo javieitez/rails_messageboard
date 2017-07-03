@@ -1,21 +1,21 @@
 <div class="header readmore">
 
 <% if logged_in? %>
-    <%= link_to "<span class=\"glyphicon glyphicon-th-list\">
-  </span>".html_safe + " All Users | ", users_path if !current_page?(users_path) %>
-    <%= link_to "<span class=\"glyphicon glyphicon-user\">
-  </span>".html_safe + " My Profile | ", current_user if !current_page?(current_user) %>
-  <%= link_to "<span class=\"glyphicon glyphicon-edit\">
-  </span>".html_safe + " Edit profile | ", edit_user_path(current_user) if !current_page?(edit_user_path(current_user)) %>
-    <%= link_to "<span class=\"glyphicon glyphicon-log-out\">
-  </span>".html_safe + "Log out", logout_path, method: :delete %>
+    <%= link_to '<span class="glyphicon glyphicon-th-list">
+  </span>'.html_safe + ' All Users | ', users_path if !current_page?(users_path) %>
+    <%= link_to '<span class="glyphicon glyphicon-user">
+  </span>'.html_safe + ' My Profile | ', current_user if !current_page?(current_user) %>
+  <%= link_to '<span class="glyphicon glyphicon-edit">
+  </span>'.html_safe + ' Edit profile | ', edit_user_path(current_user) if !current_page?(edit_user_path(current_user)) %>
+    <%= link_to '<span class=\"glyphicon glyphicon-log-out\">
+  </span>'.html_safe + 'Log out', logout_path, method: :delete %>
 <%else%>
 
-  <%= link_to "<span class=\"glyphicon glyphicon-log-in\">
-  </span>".html_safe + " Log In", login_path if !current_page?(login_path) %> 
-  <%= "or" if !current_page?(login_path) and !current_page?(signup_path)  %> 
-  <%= link_to "<span class=\"glyphicon glyphicon-edit\">
-  </span>".html_safe + " Sign Up", signup_path if !current_page?(signup_path) %>
+  <%= link_to '<span class=\"glyphicon glyphicon-log-in\">
+  </span>'.html_safe + ' Log In', login_path if !current_page?(login_path) %> 
+  <%= 'or' if !current_page?(login_path) and !current_page?(signup_path)  %> 
+  <%= link_to '<span class=\"glyphicon glyphicon-edit\">
+  </span>'.html_safe + ' Sign Up', signup_path if !current_page?(signup_path) %>
 
 <% end %>
 </div>

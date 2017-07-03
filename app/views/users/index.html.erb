@@ -10,8 +10,9 @@
           <div>
           <%= gravatar_for user, size: 50 %>
             <%= user.name %>
+          <%= '&nbsp; <span class="glyphicon glyphicon-wrench">
+          </span>'.html_safe if user.admin? %>
           </div>
-        
       <% end %>
       
       <% if !user.about.nil?  %>

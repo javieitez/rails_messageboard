@@ -14,4 +14,10 @@
             <%= @user.about %>
           <% end %>
         </p>
-      </div>
+        </div>
+        
+        
+        <%= '<div class="header readmore"> 
+        <p><span class="glyphicon glyphicon-wrench">
+  </span> This user is an administrator</p>
+            </div>'.html_safe if @user.admin? %>
