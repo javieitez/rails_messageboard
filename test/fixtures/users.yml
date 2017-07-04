@@ -6,6 +6,7 @@ user1:
   username: firstuser
   about: "Lorem ipsum and shit"
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 user2:
   name: "The Second User"

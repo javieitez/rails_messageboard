@@ -12,7 +12,13 @@
             <%= user.name %>
           <%= '&nbsp; <span class="glyphicon glyphicon-wrench">
           </span>'.html_safe if user.admin? %>
-          </div>
+          <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, 
+                        user, method: :delete,
+                        data: { confirm: ". This can't be undone... U fuckin sure?" } %>
+          <% end %>
+      </div>
+          
       <% end %>
       
       <% if !user.about.nil?  %>
