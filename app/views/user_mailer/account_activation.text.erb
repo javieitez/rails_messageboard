@@ -1,0 +1,7 @@
+Hi <%= @user.name %>,
+
+Welcome to the Message Board! Click on the link below to activate your account:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+(maybe you'll have to copy and paste the link in your browser)
