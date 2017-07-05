@@ -10,11 +10,15 @@ class ArticleTest < ActiveSupport::TestCase
       @valid_text = "a string longer than twenty five characters"
   end
 
-  test "should save valid note" do
+  test "should validate and save an article" do
     article = Article.new
     article.subject = @valid_subject
     article.text = @valid_text
     article.picture = nil
+    article.user_id = nil
+    assert_not article.valid?
+    article.user_id = User.first.id
+    assert article.valid?
     assert article.save, "Cannot save a valid note"
   end
   
@@ -35,6 +39,7 @@ class ArticleTest < ActiveSupport::TestCase
     article.subject = @invalid_subject
     article.text = @valid_text
     article.picture = nil
+    article.user_id = User.first.id
     assert_not article.save, "Saved note with short subject"
   end
 
@@ -43,6 +48,7 @@ class ArticleTest < ActiveSupport::TestCase
     article.subject = @valid_subject * 3
     article.text = @valid_text
     article.picture = nil
+    article.user_id = User.first.id
     assert_not article.save, "Saved note with subject too long"
   end
 
@@ -51,6 +57,7 @@ class ArticleTest < ActiveSupport::TestCase
     article.subject = @valid_subject
     article.text = @invalid_text
     article.picture = nil
+    article.user_id = User.first.id
     assert_not article.save, "Saved note with short content"
   end
 
