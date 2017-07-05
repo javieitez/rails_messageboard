@@ -1,8 +1,10 @@
 <% provide(:title, "Edit Note") %>
 
-<%= form_for(@article) do |f| %>
 
-<%= render 'layouts/errorcheck', {article: @article} %>
+  <%= render 'layouts/errorcheck', {article: @article} %>
+
+
+<%= form_for(@article) do |f| %>
 
   <p>
     <%= f.label :subject %><br>
