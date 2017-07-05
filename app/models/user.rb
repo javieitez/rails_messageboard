@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-
+  has_many :articles, dependent: :destroy
+  
   VALID_EMAIL = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   NO_SPACES = /\A[a-zA-Z0-9]+\z/
 

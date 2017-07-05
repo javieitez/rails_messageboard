@@ -33,15 +33,6 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   
-  test "should raise error when posting incorrect note" do
-    get new_article_path
-    post articles_path, params: {article:  { subject: "123", 
-                                                  text: "a " * 100 } } 
-    assert_select 'th', {count: 0, text: "123"}, "note must not be
-                                                              rendered in table"
-    assert_select 'input[value=?]', '123'
-    assert_select 'div[id=?]', 'error_explanation'
-  end
 
 
 

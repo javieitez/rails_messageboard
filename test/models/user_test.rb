@@ -7,6 +7,7 @@ class UserTest < ActiveSupport::TestCase
                                           username: "exampleuser",
             about: "Timeo danaos et dona ferentes",
             password: "passwd1234", password_confirmation: "passwd1234")
+    @article = Article.new()
   end
 
   test "should be valid" do
@@ -128,5 +129,14 @@ class UserTest < ActiveSupport::TestCase
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?(:remember, '')
   end
+
+  test "User associated articles should be destroyed" do
+    @user.save
+    @user.articles.create!(subject: 'a valid subject', text: 'aaaaa '*40)
+    assert_difference 'Article.count', -1 do
+      @user.destroy
+    end
+  end
+
 
 end

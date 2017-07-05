@@ -29,3 +29,9 @@ User.create!(name:  "El JA",
               activated: true,
               activated_at: Time.zone.now)
 end
+
+users = User.order(:created_at).take(7)
+25.times do
+  users.each { |user| user.articles.create!(text: Faker::Lorem.sentence(120), 
+                                        subject: Faker::Lorem.sentence(2)) }
+end
