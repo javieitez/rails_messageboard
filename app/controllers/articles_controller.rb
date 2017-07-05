@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :logged_in_user, only: [:create, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :update, :destroy]
   before_action :correct_user,   only: [:update, :destroy]
   
   def new
@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
  
     if @article.save
       flash[:success] = "Note Created!"
