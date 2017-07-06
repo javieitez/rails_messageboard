@@ -7,6 +7,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:user_3)
   end
 
+  test "should get root + title" do # root must be articles index
+    get root_path
+  #  assert_response :success
+  #  assert_select "title", "#{@base_title}"
+  end
 
   test "should get new" do
     get users_new_url

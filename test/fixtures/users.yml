@@ -2,8 +2,8 @@
 
 user1:
   name: "The First User"
-  email: user1@hotmail.com
-  username: firstuser
+  email: "user1@hotmail.com"
+  username: "firstuser"
   about: "Lorem ipsum and shit"
   password_digest: <%= User.digest('password') %>
   admin: true
@@ -12,8 +12,8 @@ user1:
 
 user2:
   name: "The Second User"
-  email: user2@hotmail.com
-  username: 2nduser
+  email: "user2@hotmail.com"
+  username: "2nduser"
   about: "Lorem ipsum and shit"
   password_digest: <%= User.digest('password') %>
   activated: true
