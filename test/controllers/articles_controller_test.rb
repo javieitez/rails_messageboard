@@ -7,7 +7,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:user1)
     @picture = fixture_file_upload('kitten.jpg', 'image/jpg')
     @picture2 = fixture_file_upload('rails.png', 'image/png')
-    
+    @article = Article.first
   end
 
   test "should get index + title" do
@@ -49,7 +49,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   
 
 
-test "post new note with image, then edit" do
+  test "post new note with image, then edit" do
     #create a new note 
       log_in_as @user
       get new_article_path
@@ -88,5 +88,21 @@ test "post new note with image, then edit" do
       assert_select 'img[alt=?]', 'Kitten', count: 0
   end
 
+  test "cannot edit posts from other users" do
+    log_in_as @user
+      get edit_article_path(@article)
+      put article_path(@article), params: {article: {subject: "subject hacked"}}  
+      assert_not @article.subject == "subject hacked"
+      assert @article.subject == "subject of the 3rd article"
+      put article_path(@article), params: {article: {text: "text hacked " * 3}}  
+      assert_not @article.text == "text hacked " * 3
+  end
 
+  test "cannot delete posts from other users" do
+    log_in_as @user
+    assert_no_difference 'Article.count' do
+      delete article_path(@article)
+    end
+  end
+  
 end
