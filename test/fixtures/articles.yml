@@ -5,18 +5,18 @@ article1:
   subject: 'this is the subject'
   text: 'this is the text and must be longer than twenty five characters'
   created_at: "2017-06-21 13:38:22"
-  user_id: 1
+  user_id: <%= User.first.id %>
   
 article2:
   id: 2
   subject: 'subject of the 2nd article'
   text: 'this is the other text and must be longer than twenty five characters'
   created_at: "2017-06-22 13:38:22"
-  user_id: 1
+  user_id: <%= User.first.id %>
   
 article3:
   id: 3
   subject: 'subject of the 3rd article'
   text: <%= ' a word ' * 200 %>
   created_at: "2017-06-23 13:38:22"
-  user_id: 1
+  user_id: <%= User.first.id %>
