@@ -2,9 +2,11 @@
 
 A simple message board with image upload support.
 
-Currently in **Alpha** status: 
+Currently in **Beta** status: 
 
-* Messages can be created, edited or destroyed  by anyone
+* Only logged in users can create messages
+* Messages can only be edited or destroyed by the message owner
+* User registration works out of the box, but the email service must be configured apart in prod for the users to receive the activation email
 * Subthreads are not developed yet
 
 ---
