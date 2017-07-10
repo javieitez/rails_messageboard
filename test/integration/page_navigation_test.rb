@@ -5,6 +5,8 @@ class PageNavigationTest < ActionDispatch::IntegrationTest
   def setup
     @base_title = "Message Board"
     @user = users(:user1)
+    @article = Article.find_by_id(2)
+    @own_article = Article.find_by_id(1)
   end
   
   test "should get root + title" do # root must be articles index
@@ -63,5 +65,22 @@ class PageNavigationTest < ActionDispatch::IntegrationTest
       assert_select 'a[href=?]', edit_user_path(@user), count: 0
   end
 
+  test "edit and delete msg links hidden when not logged in" do
+    get root_path
+    assert_select 'a[href=?]', edit_article_path(@article), count: 0
+    assert_select 'a[href=?][data-method=?]', article_path(@article), 
+                                                  "delete", count: 0
+  end
+
+  test "edit and delete msg links active only for own posts" do
+    log_in_as @user
+    get root_path
+    assert_select 'a[href=?]', edit_article_path(@article), count: 0
+    assert_select 'a[href=?][data-method=?]', article_path(@article), 
+                                                  "delete", count: 0
+    assert_select 'a[href=?]', edit_article_path(@own_article), count: 1
+    assert_select 'a[href=?][data-method=?]', article_path(@own_article), 
+                                                  "delete", count: 1
+  end
 
 end

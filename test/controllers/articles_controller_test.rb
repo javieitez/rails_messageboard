@@ -88,7 +88,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       assert_select 'img[alt=?]', 'Kitten', count: 0
   end
 
-  test "cannot edit posts from other users" do
+  test "must not edit posts from other users" do
     log_in_as @user
       get edit_article_path(@article)
       put article_path(@article), params: {article: {subject: "subject hacked"}}  
@@ -98,7 +98,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       assert_not @article.text == "text hacked " * 3
   end
 
-  test "cannot delete posts from other users" do
+  test "must not delete posts from other users" do
     log_in_as @user
     assert_no_difference 'Article.count' do
       delete article_path(@article)

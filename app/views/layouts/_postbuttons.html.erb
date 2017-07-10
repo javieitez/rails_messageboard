@@ -1,13 +1,12 @@
-    <td class="text-right smaller_fonts padded">
-    <%= time_ago_in_words(article.created_at) %> ago.
-    
-    <% if article.created_at != article.updated_at %>
-        Updated <%= time_ago_in_words(article.updated_at) %> ago.
-    <% end %>
-    
-    </td>
-    
+<td class="text-right smaller_fonts padded">
+<%= time_ago_in_words(article.created_at) %> ago.
 
+<% if article.created_at != article.updated_at %>
+    Updated <%= time_ago_in_words(article.updated_at) %> ago.
+<% end %>
+</td>
+
+<% if !current_user.nil? and article.user_id == current_user.id %>    
     <td class="text-right padded">
     <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, 
                                                   edit_article_path(article) %>
@@ -19,3 +18,7 @@
                                                               method: :delete,
                                         data: { confirm: 'u fuckin sure?' } %>
     </td>
+    <% else %>
+    <td class="text-right padded"></td>
+    <td class="text-right padded rcorners-right"></td>
+<% end %>
