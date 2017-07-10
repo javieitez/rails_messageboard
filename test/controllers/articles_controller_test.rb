@@ -7,7 +7,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:user1)
     @picture = fixture_file_upload('kitten.jpg', 'image/jpg')
     @picture2 = fixture_file_upload('rails.png', 'image/png')
-    @article = Article.first
+    @article = Article.find_by_id(2)
+    @own_article = Article.find_by_id(1)
   end
 
   test "should get index + title" do
@@ -93,9 +94,25 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       get edit_article_path(@article)
       put article_path(@article), params: {article: {subject: "subject hacked"}}  
       assert_not @article.subject == "subject hacked"
-      assert @article.subject == "subject of the 3rd article"
+      assert @article.subject == "subject of the 2nd article"
       put article_path(@article), params: {article: {text: "text hacked " * 3}}  
       assert_not @article.text == "text hacked " * 3
+  end
+
+  test "must not create articles if not logged in" do
+    delete user_path(@user)
+    assert_no_difference 'Article.count' do
+      post articles_path, params: {article: {subject: "article hacked", 
+                                                        text: "a word"  * 50 }}
+    end
+  end
+
+  test "must create articles if logged in" do
+    log_in_as @user
+    assert_difference 'Article.count', 1 do
+      post articles_path, params: {article: {subject: "subject " * 3, 
+                                                        text: "a word"  * 50 }}
+    end
   end
 
   test "must not delete posts from other users" do
@@ -105,4 +122,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     end
   end
   
+  test "must delete their own posts" do
+    log_in_as @user
+    assert_difference 'Article.count', -1 do
+      delete article_path(@own_article)
+    end
+  end
+
+
 end
